@@ -4,7 +4,6 @@ input = sys.stdin.readline
 
 n = int(input())
 graph = [list(input()) for _ in range(n)]
-ans1, ans2 = 0, 0
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -30,20 +29,14 @@ def change_color():
             if graph[i][j]=='G':
                 graph[i][j]='R'
 
-
-visited = [[False]*n for _ in range(n)]
-for i in range(n):
-    for j in range(n):
-        if not visited[i][j]:
-            ans1+=1
-            dfs(i, j)
-
-change_color()
-
-visited = [[False]*n for _ in range(n)]
-for i in range(n):
-    for j in range(n):
-        if not visited[i][j]:
-            ans2+=1
-            dfs(i, j)
-print(ans1, ans2)
+for x in range(2):
+    visited = [[False]*n for _ in range(n)]
+    answer = 0
+    if x:
+        change_color()
+    for i in range(n):
+        for j in range(n):
+            if not visited[i][j]:
+                answer+=1
+                dfs(i, j)
+    print(answer, end=' ')
