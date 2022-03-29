@@ -19,7 +19,7 @@ def bfs(start_x, start_y):
         x, y, s = queue.popleft()
 
         if x == n-1 and y == m-1:
-            return distance[n-1][m-1][s]
+            return min(distance[n-1][m-1])
 
         for i in range(4):
             nx = x+dx[i]
